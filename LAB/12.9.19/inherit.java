@@ -12,8 +12,7 @@ class person
         name=s.next();
         System.out.println("\nEnter the Address:");
         address=s.next();
-        //this.name=name;
-        // this.address=address;
+        
     }
 }
 
@@ -29,9 +28,7 @@ class student extends person
         System.out.println("\nEnter the Sem:");
         sem=s.nextInt();
         super.input();
-        //this.rollno=rollno;
-        //this.sem=sem;
-        //super(name,address);
+        
     }
 }
 
@@ -48,9 +45,7 @@ class exam extends student
         System.out.println("\nEnter Marks 2:");
         marks2=s.nextInt();
         super.input();
-        //this.marks1=marks1;
-        //this.marks2=marks2;
-        //super(rollno,sem,name,address);
+        
     }
     float calc()
     {
