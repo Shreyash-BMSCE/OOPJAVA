@@ -3,15 +3,6 @@ import java.util.*;
 abstract class Shape
 {
     int x;
-   /* Shape(int a, int b)
-    {
-        x=a;
-        b=y;
-    }
-    Shape(int a)
-    {
-        x=a;
-    } */
     abstract void printArea();
 }
 
