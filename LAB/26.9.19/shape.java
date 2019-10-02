@@ -2,14 +2,14 @@ import java.util.*;
 
 abstract class Shape
 {
-    int x;
+    double x;
     abstract void printArea();
 }
 
 class Rectangle extends Shape
 {
-    int y;
-    Rectangle(int a,int b)
+    double y;
+    Rectangle(double a,double b)
     {
         x=a;
         y=b;
@@ -24,8 +24,8 @@ class Rectangle extends Shape
 
 class Triangle extends Shape
 {
-    int y;
-    Triangle(int a,int b)
+    double y;
+    Triangle(double a,double b)
     {
         x=a;
         y=b;
@@ -39,7 +39,7 @@ class Triangle extends Shape
 
 class Circle extends Shape
 {
-    Circle(int a)
+    Circle(double a)
     {
         x=a;
     }
@@ -56,7 +56,8 @@ class shapemain
     public static void main(String args[])
     {
         Scanner s = new Scanner(System.in);
-        int a,b,ch;
+        double a,b;
+        int ch;
         while(true)
         {
             System.out.println("\n Enter the Choice: 1.Rectangle  2.Triangle  3.Circle 4.Exit");
@@ -64,19 +65,19 @@ class shapemain
             switch(ch)
             {
                 case 1: System.out.println(" Enter the parameters: ");
-                        a = s.nextInt();
-                        b = s.nextInt(); 
+                        a = s.nextDouble();
+                        b = s.nextDouble(); 
                         Rectangle ob1 = new Rectangle(a,b);
                         ob1.printArea();
                         break;
                 case 2: System.out.println("Enter the parameters: ");
-                        a = s.nextInt();
-                        b = s.nextInt();
+                        a = s.nextDouble();
+                        b = s.nextDouble();
                         Triangle ob2 = new Triangle(a,b);
                         ob2.printArea();
                         break;
                 case 3: System.out.println(" Enter the parameter: ");
-                        a = s.nextInt();
+                        a = s.nextDouble();
                         Circle ob3 = new Circle(a);
                         ob3.printArea();
                         break;
