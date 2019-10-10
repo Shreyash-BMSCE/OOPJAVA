@@ -19,14 +19,14 @@ class Account
 class savings extends Account //10.124.6.15
 {
     double bal=0,ci=0,dep=0,t=0;
-    int i=0;
     savings(double bal)
     {
         this.bal = bal;
     }
     int ch1;
-    void SA()
+    int SA()
     {
+        int i=0;
         super.input1();
         while(i==0)
         {
@@ -63,7 +63,9 @@ class savings extends Account //10.124.6.15
                         break;
             }
         }
+        return 0;
     }
+   
 }
 
 class current extends Account
@@ -73,8 +75,9 @@ class current extends Account
         this.bal = bal;
     }
     int ch2,i=0;
-    void CA()
+    int CA()
     {
+        int i=0;
         while(i==0)
         {
             super.input1();
@@ -108,9 +111,9 @@ class current extends Account
                             System.out.println("\tSERVICE CHARGE: "+ schar);
                             break;
                     case 4: i=1;
-                            break;
                 }
         }
+        return 0;
     }
 }
 
@@ -121,27 +124,35 @@ class Bank
     {
         Scanner s = new Scanner(System.in);
         double sal;
-        int type,n,i=1;
-        System.out.println("\nEnter the number of accounts you want to open:");
-        n = s.nextInt();
-        savings ac1[] = new savings[n];
-        current ac2[] = new current[n];
+        int junk,type,n,i=1;
         System.out.println("Enter your Salary PA:");
         sal = s.nextDouble();
-        for(i=0;i<n;i++)
+        while(true)
         {
-            System.out.println("\n\t\t :::PICK AN OPTION::: \n\t 1.SAVINGS ACCOUNT \t 2.CURRENT ACCOUNT \t3.EXIT ");
-            type = s.nextInt();
-            switch (type)
-            {
-                case 1: ac1[i] = new savings(sal);
-                        ac1[i].SA();
-                        break;
-                case 2:ac2[i] = new current(sal);
-                        ac2[i].CA();
-                        break;
-                case 3:System.exit(0);
-            }
+                System.out.println("\n\t\t :::PICK AN OPTION::: \n\t 1.SAVINGS ACCOUNT \t 2.CURRENT ACCOUNT \t3.EXIT ");
+                type = s.nextInt();
+                switch (type)
+                {
+                    case 1: System.out.println("\nEnter the number of accounts you want to open:");
+                            n = s.nextInt();
+                            savings ac1[] = new savings[n];
+                            for(i=0;i<n;i++)
+                            {
+                                ac1[i] = new savings(sal);
+                                junk = ac1[i].SA();
+                            }
+                            break;
+                    case 2: System.out.println("\nEnter the number of accounts you want to open:");
+                            n = s.nextInt();
+                            current ac2[] = new current[n];
+                            for(i=0;i<n;i++)
+                            {
+                                ac2[i] = new current(sal);
+                                junk = ac2[i].CA();
+                            }
+                            break;
+                    case 3:System.exit(0);
+                }
         }
     }   
 }
