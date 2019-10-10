@@ -77,10 +77,10 @@ class current extends Account
     int ch2,i=0;
     int CA()
     {
+        super.input1();
         int i=0;
         while(i==0)
         {
-            super.input1();
             System.out.println("1.Deposit with Cheque 2.WithDraw with Cheque 3.View profile 4.Go back ");
             ch2 = s.nextInt();
                 switch(ch2)
@@ -100,7 +100,7 @@ class current extends Account
                             }
                             if(bal<10000)
                             {
-                                schar = schar + 0.1*bal;
+                                schar = schar + 0.001*bal;
                                 System.out.println("YOU HAVE TO PAY A SERVICE CHARGE OF Rs:" + schar);
                             }
                             break;
@@ -111,6 +111,7 @@ class current extends Account
                             System.out.println("\tSERVICE CHARGE: "+ schar);
                             break;
                     case 4: i=1;
+                            break;
                 }
         }
         return 0;
