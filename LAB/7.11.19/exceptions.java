@@ -1,19 +1,19 @@
 import java.util.*;
 
-class otoexception extends Expection
+class otoexception extends Exception
 {
     String speak;
-    otoexception(String speak)
+    otoexception(String _speak)
     {
-        this.speak=speak;
+        speak = _speak;
     }
-    public String ToString()
+    public String toString()
     {
         return speak;
     }
 }
 
-class kodomoexception extends Expection
+/*class otoexception extends Exception
 {
     String speak;
     otoexception(String speak)
@@ -24,91 +24,71 @@ class kodomoexception extends Expection
     {
         return speak;
     }
-}
+} */
 
 class father
 {
     int fa;
-    father(int fa)          
+    father(int fa) throws otoexception      
     {
-        this.fa=fa
-        try
-        {
-            if(fa<0)
-                Throw new otoexception("NegativeFatherException");
-        }
-        catch(otoexception e)
-        {
-            System.out.println(e);
-        }
+        this.fa=fa;
+        
+            if(fa<0){
+                throw new otoexception("NegativeFatherException"); 
+            }
+        
     }
 }
 
-class son extends father
+class son extends father 
 {
     int sa;
-    son(int sa,int fa)
+    son(int sa,int fa) throws otoexception 
     {
+        super(fa);
         this.sa=sa;
-        try{
-            if(fa<sa)
-                Throw new otoexception("SmolFatherException");
-            if(sa<0)
-                Throw new kodomoexception("NegativeSonException");
-        }
-        catch(kodomoexception e)
-        {
-            System.out.println(e);
-        }
-        catch(otoexception e)
-        {
-            System.out.println(e);
-        }
+          if(sa<0){ 
+                throw new otoexception("NegativeSonException"); 
+            }
+        if(fa<sa)
+            throw new otoexception("Father's age is less than or equal to son's age");
+            
+        
     }
 }
 
 
 class except{
 	public static void main(String args[]){
-		int f=0, flag = 0, s=0;
-		Scanner vs = new Scanner(System.in);
-		
-		
-		do{
-			flag = 0;
-				System.out.println("Enter fathers age");
-				f = vs.nextInt();
-                father ob = new b(f);
-			}
-		}while(flag == 1);
-		
-		do{
-			
-			flag = 0;
-			// THIS IS US
+		int f=0, flag, s=0;
+        Scanner vs = new Scanner(System.in);
+        
+        do{
+            
 			try{
-				System.out.println("Enter Sons age");
-				s = vs.nextInt();
-				if(s<0){
-					throw new WrongAgeException("Sons AGE LESS THAN 0");
-				}		
-			}
-			catch(WrongAgeException sa2){
-				System.out.println(sa2);
-				flag = 1;
-				continue;
-			}
-		}while(flag == 1);
-			
-			
-			//This is us
-			
-			try{
-				Son obj = new Son(f, s);
-			}
-			catch(WrongAgeException wa){
-				System.out.println(wa);
-			}		
-		
+                System.out.println("Enter fathers age");
+                f = vs.nextInt();
+                father ob = new father(f);
+                flag=0;
+            }
+            catch(otoexception e)
+            {
+                flag=1;
+                System.out.println(e);
+            }
+        }    while(flag==1);
+            // THIS IS SON
+            try
+            {	
+                System.out.println("Enter Sons age");
+		        s = vs.nextInt();
+                son obj = new son(s, f);
+
+            }
+            catch(otoexception e)
+            {
+                System.out.println(e);
+            }
 	}
 }
+  
